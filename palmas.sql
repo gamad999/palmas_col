@@ -93,6 +93,21 @@ SELECT species as especie, COUNT(DISTINCT id) as registros_gbif
 FROM arecaceae WHERE depto = 'CAQUETÁ' GROUP BY especie 
 ORDER BY registros_gbif DESC;
 
+-- Consulta de riqueza y taxonomia de especies de palmas para el país y el departamento de Amazonas
+SELECT municipio, depto as departamento, COUNT(DISTINCT species) as num_especies
+FROM arecaceae GROUP BY municipio, departamento ORDER BY num_especies DESC;
+
+-- Consulta de taxonomia de especies de palmas para el departamento de Amazonas
+
+SELECT species as especie, COUNT(DISTINCT id) as registros_gbif
+FROM arecaceae WHERE depto = 'AMAZONAS' 
+GROUP BY especie ORDER BY registros_gbif DESC;
+
+-- Consulta de taxonomia de especies de palmas para la ecoregion bosque montañoso
+-- del valle del río magdalena y bosque húmedo del Chocó-Darien
+SELECT species as especie, COUNT(DISTINCT id) as registros_gbif
+FROM arecaceae WHERE ecoregion = 'Chocó-Darién moist forests'
+GROUP BY especie ORDER BY registros_gbif DESC;
 
 
 
