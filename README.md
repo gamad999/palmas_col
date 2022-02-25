@@ -13,4 +13,4 @@ En la carpeta Consultas se relacionan las tablas de resultados de consultas espa
 En la carpeta Cartografía se relacionan los documentos mapas de análisis básico de biodiversidad de palmas en Colombia
 
 Para consultar flujo de trabajo del proyecto, visitar este canal de Youtube: 
-https://www.youtube.com/watch?v=f0JrFn1tM64&amp;list=PLyix_p9jQXqpS2btFyPwWnpAvSnynHQ0E
+https://www.youtube.com/playlist?list=PLyix_p9jQXqpS2btFyPwWnpAvSnynHQ0E
