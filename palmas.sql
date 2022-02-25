@@ -28,3 +28,32 @@ WHERE ST_Intersects(arecaceae.geom, ecoregiones.geom);
 UPDATE arecaceae SET parquenac = nombre
 FROM parquenacional
 WHERE ST_Intersects(arecaceae.geom, parquenacional.geom);
+
+-- Consultas espaciales básicas
+-- Consulta de número de especies de palmas por departamento
+SELECT depto as departamento, COUNT(DISTINCT species) as numespecies
+FROM arecaceae
+GROUP BY depto ORDER BY numespecies DESC;
+
+-- Consulta de riqueza de especies registradas en municipios de Antioquia
+SELECT municipio, depto, COUNT(DISTINCT species) as riqespecies
+FROM arecaceae
+-- WHERE depto = 'ANTIOQUIA'
+GROUP BY municipio, depto ORDER BY riqespecies DESC;
+
+-- Consulta de riqueza de especies por ecoregión WWF
+SELECT ecoregion, COUNT(DISTINCT species) as riqespecies
+FROM arecaceae
+GROUP BY ecoregion ORDER BY riqespecies DESC;
+
+-- Consulta de riqueza de especies de palmas por parque nacional
+SELECT parquenac, COUNT(DISTINCT species) as riqespecies
+FROM arecaceae
+GROUP BY parquenac ORDER BY riqespecies DESC;
+
+
+
+
+
+
+
