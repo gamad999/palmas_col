@@ -31,25 +31,58 @@ WHERE ST_Intersects(arecaceae.geom, parquenacional.geom);
 
 -- Consultas espaciales básicas
 -- Consulta de número de especies de palmas por departamento
+
+CREATE TABLE bio_depto(depto varchar(60), numespecies integer);
+INSERT INTO bio_depto(depto, numespecies)
 SELECT depto as departamento, COUNT(DISTINCT species) as numespecies
 FROM arecaceae
 GROUP BY depto ORDER BY numespecies DESC;
 
 -- Consulta de riqueza de especies registradas en municipios de Antioquia
-SELECT municipio, depto, COUNT(DISTINCT species) as riqespecies
+
+CREATE TABLE bio_muni(municipio varchar(80), riqespecies integer);
+INSERT INTO bio_muni(municipio, riqespecies)
+SELECT municipio, COUNT(DISTINCT species) as riqespecies
 FROM arecaceae
 -- WHERE depto = 'ANTIOQUIA'
 GROUP BY municipio, depto ORDER BY riqespecies DESC;
 
 -- Consulta de riqueza de especies por ecoregión WWF
+CREATE TABLE bio_ecoregion(ecoregion varchar(90), riqespecies integer);
+INSERT INTO bio_ecoregion(ecoregion, riqespecies)
 SELECT ecoregion, COUNT(DISTINCT species) as riqespecies
 FROM arecaceae
 GROUP BY ecoregion ORDER BY riqespecies DESC;
 
 -- Consulta de riqueza de especies de palmas por parque nacional
+CREATE TABLE bio_parquenac(parquenac varchar(80), riqespecies integer);
+INSERT INTO bio_parquenac(parquenac, riqespecies)
 SELECT parquenac, COUNT(DISTINCT species) as riqespecies
 FROM arecaceae
 GROUP BY parquenac ORDER BY riqespecies DESC;
+
+-- Generación de campo de riqueza de especies de palmas para cada cobertura incluida
+--Riqueza de especies de palmas para capa de departamentos
+ALTER TABLE departamentos ADD COLUMN riquezaesp_palmas integer;
+UPDATE departamentos SET riquezaesp_palmas = numespecies
+FROM bio_depto WHERE dpto_cnmbr = bio_depto.depto;
+
+--Riqueza de especies de palmas para capa de municipios
+ALTER TABLE municipios ADD COLUMN riquezaesp_palmas integer;
+UPDATE municipios SET riquezaesp_palmas = riqespecies
+FROM bio_muni WHERE mpio_cnmbr = bio_muni.municipio;
+
+--Riqueza de especies de palmas para capa de ecoregiones
+ALTER TABLE ecoregiones ADD COLUMN riquezaesp_palmas integer;
+UPDATE ecoregiones SET riquezaesp_palmas = riqespecies
+FROM bio_ecoregion WHERE eco_name = bio_ecoregion.ecoregion;
+
+--Riqueza de especies de palmas para capa de parques nacionales
+ALTER TABLE parquenacional ADD COLUMN riquezaesp_palmas integer;
+UPDATE parquenacional SET riquezaesp_palmas = riqespecies
+FROM bio_parquenac WHERE nombre = bio_parquenac.parquenac;
+--
+
 
 
 
