@@ -124,7 +124,13 @@ INSERT INTO buffer_arecaceae(geom, especie)
 SELECT ST_Buffer(geom, 0.009), species
 FROM arecaceae;
 
+-- Calculo de MaxD en Km para cada especie del género Bactris (MaxD entre todos los posibles pares de registros)
 
+SELECT species AS especie, COUNT(DISTINCT arecaceae.id) AS registros_gbif,
+MAX(ST_Distance(arecaceae.geom, buffer_arecaceae.geom)*111) AS maxdistancia
+FROM arecaceae, buffer_arecaceae
+WHERE genus = 'Bactris' AND arecaceae.species = buffer_arecaceae.especie
+GROUP BY species ORDER BY maxdistancia;
 
 
 
