@@ -109,6 +109,13 @@ SELECT species as especie, COUNT(DISTINCT id) as registros_gbif
 FROM arecaceae WHERE ecoregion = 'Chocó-Darién moist forests'
 GROUP BY especie ORDER BY registros_gbif DESC;
 
+/*Consulta de taxonomia de especies de palmas para los Parques Nacionales
+Chiribiquete, Yaigoje Apaporis y Amacayacu*/
+
+SELECT species as especie, COUNT(DISTINCT id) as registros_gbif
+FROM arecaceae WHERE parquenac = 'AMACAYACU'
+GROUP BY especie ORDER BY registros_gbif DESC;
+
 
 
 
