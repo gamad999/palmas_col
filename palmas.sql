@@ -87,6 +87,15 @@ FROM bio_parquenac WHERE nombre = bio_parquenac.parquenac;
 SELECT genus as genero, COUNT(DISTINCT species) as especies
 FROM arecaceae GROUP BY genero ORDER BY especies DESC;
 
+-- Consulta de especies para el departamento de Antioquia
+
+SELECT species as especie, COUNT(DISTINCT id) as registros_gbif
+FROM arecaceae WHERE depto = 'CAQUETÁ' GROUP BY especie 
+ORDER BY registros_gbif DESC;
+
+
+
+
 
 
 
