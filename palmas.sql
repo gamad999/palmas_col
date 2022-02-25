@@ -116,6 +116,18 @@ SELECT species as especie, COUNT(DISTINCT id) as registros_gbif
 FROM arecaceae WHERE parquenac = 'AMACAYACU'
 GROUP BY especie ORDER BY registros_gbif DESC;
 
+-- Construcción de buffer de posición con radio de 1 Km
+CREATE TABLE buffer_arecaceae(id serial primary key, especie varchar(50), 
+							  geom geometry(Polygon, 4326));
+							  
+INSERT INTO buffer_arecaceae(geom, especie) 
+SELECT ST_Buffer(geom, 0.009), species
+FROM arecaceae;
+
+
+
+
+
 
 
 
