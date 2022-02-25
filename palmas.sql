@@ -81,7 +81,19 @@ FROM bio_ecoregion WHERE eco_name = bio_ecoregion.ecoregion;
 ALTER TABLE parquenacional ADD COLUMN riquezaesp_palmas integer;
 UPDATE parquenacional SET riquezaesp_palmas = riqespecies
 FROM bio_parquenac WHERE nombre = bio_parquenac.parquenac;
---
+
+-- Consulta de riqueza de especies para cada género botánico de palmas en Colombia
+
+SELECT genus as genero, COUNT(DISTINCT species) as especies
+FROM arecaceae GROUP BY genero ORDER BY especies DESC;
+
+
+
+
+
+
+
+
 
 
 
