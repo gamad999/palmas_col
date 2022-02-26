@@ -1,5 +1,5 @@
 # Biodiversidad de palmas (Arecaceae) en Colombia
-Repositorio donde se aloja el código PostgreSQL - PostGIS para el desarrollo de una base de datos espacial de analisis de biodiversidad de palmas (Arecaceae) en Colombia. 
+Repositorio donde se aloja el codigo PostgreSQL - PostGIS para el desarrollo de una base de datos espacial de analisis de biodiversidad de palmas (Arecaceae) en Colombia. 
 
 Fuentes de datos:
 

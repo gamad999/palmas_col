@@ -148,6 +148,32 @@ species = 'Reinhardtia gracilis' OR
 species = 'Reinhardtia koschnyana' OR
 species = 'Reinhardtia simplex';
 
+-- En peligro
+UPDATE arecaceae SET conservacion = 'En Peligro'
+WHERE species = 'Aiphanes acaulis' OR
+species = 'Aiphanes duquei' OR
+species = 'Aiphanes parvifolia' OR
+species = 'Astrocaryum malibo' OR 
+species = 'Astrocaryum triandrum' OR
+species = 'Attalea amygdalina' OR
+species = 'Attalea cohune' OR
+species = 'Attalea colenda' OR
+species = 'Ceroxylon alpinum' OR
+species = 'Ceroxylon quindiuense' OR
+species = 'Ceroxylon ventricosum' OR
+species = 'Coccothrinax argentata' OR
+species = 'Chamaedorea ricardoi' OR
+species = 'Elaeis oleifera' OR
+species = 'Hyospathe wendlandiana' OR
+species = 'Phytelephas tumacana' OR
+species = 'Prestoea simplicifolia';
+
+SELECT species, COUNT(DISTINCT id) AS registros_gbif, COUNT(DISTINCT depto) AS departamentos
+FROM arecaceae WHERE conservacion = 'En Peligro'
+GROUP BY species ORDER BY registros_gbif, departamentos;
+
+
+
 
 
 
