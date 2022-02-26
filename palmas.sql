@@ -172,6 +172,31 @@ SELECT species, COUNT(DISTINCT id) AS registros_gbif, COUNT(DISTINCT depto) AS d
 FROM arecaceae WHERE conservacion = 'En Peligro'
 GROUP BY species ORDER BY registros_gbif, departamentos;
 
+-- VULNERABLE(vu)
+
+UPDATE arecaceae SET conservacion = 'Vulnerable'
+WHERE species = 'Acoelorraphe wrightii' OR
+species = 'Aiphanes gelatinosa' OR
+species = 'Aiphanes pilaris' OR
+species = 'Attalea nucifera' OR
+species = 'Bactris rostrata' OR
+species = 'Cryosophila kalbreyeri' OR
+species = 'Chamaedorea pygmaeae' OR
+species = 'Chamaedorea sullivaniorum' OR
+species = 'Geonoma chlamydostachys' OR
+species = 'Geonoma santanderensis' OR
+species = 'Hyospathe frontinoensis' OR
+species = 'Oenocarpus circumtextus' OR
+species = 'Syagrus sancona' OR
+species = 'Wettinia hirsuta' OR 
+species = 'Wettinia microcarpa';
+
+SELECT species AS especie, COUNT(DISTINCT id) AS registros_gbif, COUNT(DISTINCT depto) AS departamentos
+FROM arecaceae WHERE conservacion = 'Vulnerable'
+GROUP BY species ORDER BY registros_gbif, departamentos;
+
+
+
 
 
 
