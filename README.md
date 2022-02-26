@@ -9,6 +9,8 @@ Fuentes de datos:
 - World Wildlife Foundation
 - Parques Nacionales Naturales de Colombia. Datos Abiertos de Gobierno de Colombia 
 
+- Calder�n, E. Libro Rojo de Plantas de Colombia. Volumen 2: Palmas, frailejones y zamias.
+
 En la carpeta Consultas se relacionan las tablas de resultados de consultas espaciales en formato .csv
 En la carpeta Cartografía se relacionan los documentos mapas de análisis básico de biodiversidad de palmas en Colombia
 
