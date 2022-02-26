@@ -132,6 +132,24 @@ FROM arecaceae, buffer_arecaceae
 WHERE genus = 'Bactris' AND arecaceae.species = buffer_arecaceae.especie
 GROUP BY species ORDER BY maxdistancia;
 
+-- Clasificación por estado de conservación de especies de palmas en Colombia
+-- En peligro crítico
+SELECT depto, COUNT(DISTINCT id) AS registros_gbif
+FROM arecaceae WHERE species = 'Reinhardtia simplex'
+GROUP BY depto ORDER BY registros_gbif;
+
+ALTER TABLE arecaceae ADD COLUMN conservacion varchar(20);
+
+UPDATE arecaceae SET conservacion = 'En Peligro Critico'
+WHERE species = 'Aiphanes graminifolia' OR
+species = 'Aiphanes leiostachys' OR
+species = 'Ceroxylon sasaimae' OR
+species = 'Reinhardtia gracilis' OR
+species = 'Reinhardtia koschnyana' OR
+species = 'Reinhardtia simplex';
+
+
+
 
 
 
