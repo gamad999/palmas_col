@@ -12,6 +12,7 @@ Fuentes de datos:
 - Calderón, E. Libro Rojo de Plantas de Colombia. Volumen 2: Palmas, frailejones y zamias.
 
 En la carpeta Consultas se relacionan las tablas de resultados de consultas espaciales en formato .csv
+
 En la carpeta Cartografí­a se relacionan los documentos mapas de análisis básico de biodiversidad de palmas en Colombia
 
 Para consultar flujo de trabajo del proyecto, visitar este canal de Youtube: 
