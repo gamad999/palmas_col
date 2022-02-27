@@ -191,9 +191,26 @@ species = 'Syagrus sancona' OR
 species = 'Wettinia hirsuta' OR 
 species = 'Wettinia microcarpa';
 
-SELECT species AS especie, COUNT(DISTINCT id) AS registros_gbif, COUNT(DISTINCT depto) AS departamentos
+/*Caluclo de distancia máxima entre todos los posibles pares de registros de
+cada especie en peligro critico, en peligro o vulnerable*/
+SELECT species AS especie, COUNT(DISTINCT arecaceae.id) AS registros_gbif, 
+COUNT(DISTINCT depto) AS numdeptos,
+MAX(ST_Distance(arecaceae.geom, buffer_arecaceae.geom)*111) AS maxdistancia
+FROM arecaceae, buffer_arecaceae 
+WHERE conservacion = 'Vulnerable' AND arecaceae.species = buffer_arecaceae.especie
+--AND species <> 'Ceroxylon quindiuense'
+GROUP BY species ORDER BY maxdistancia, registros_gbif, numdeptos;
+
+SELECT species AS especie, COUNT(DISTINCT arecaceae.id) AS registros_gbif
+FROM arecaceae
+WHERE conservacion = 'En Peligro Critico'
+GROUP BY species ORDER BY registros_gbif
+
+-- Segmentacion geografica por departamento de especies en peligro critico, en peligro o vulnerables
+
+SELECT depto as departamento, COUNT(DISTINCT species) AS num_especies_peligro_crit
 FROM arecaceae WHERE conservacion = 'Vulnerable'
-GROUP BY species ORDER BY registros_gbif, departamentos;
+group by depto ORDER BY num_especies_peligro_crit DESC;
 
 
 
