@@ -212,6 +212,20 @@ SELECT depto as departamento, COUNT(DISTINCT species) AS num_especies_peligro_cr
 FROM arecaceae WHERE conservacion = 'Vulnerable'
 group by depto ORDER BY num_especies_peligro_crit DESC;
 
+SELECT COUNT(DISTINCT genus)
+FROM arecaceae;
+
+-- Consolidado de nombre cientifico de especies por departamento
+
+SELECT species AS especie, COUNT(DISTINCT id) AS registros_gbif, conservacion
+FROM arecaceae WHERE depto = 'VICHADA'
+GROUP BY species, conservacion ORDER BY registros_gbif DESC;
+
+SELECT DISTINCT depto FROM arecaceae group by depto;
+
+
+
+
 
 
 
